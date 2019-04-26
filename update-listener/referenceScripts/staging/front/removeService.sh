@@ -1,1 +1,1 @@
-sudo docker service rm lesfront
+sudo docker service rm lesfrontstaging

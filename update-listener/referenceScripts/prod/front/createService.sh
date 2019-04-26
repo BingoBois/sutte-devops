@@ -1,2 +1,2 @@
-sudo docker build -t lesfront:prod /home/bingo/sutte-frontend
-sudo docker service create --replicas 2 --name lesfront --publish published=80,target=3000 --update-delay 5s lesfront:prod npm start
+sudo docker build -t lesfrontprod:latest /home/bingo/sutte-frontend
+sudo docker service create --replicas 2 --name lesfrontprod --publish published=80,target=3000 --update-delay 5s lesfrontprod:latest npm start

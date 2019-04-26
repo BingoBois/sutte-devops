@@ -2,7 +2,6 @@
 
 ## Server Info
 1. Droplet = 35.198.188.139 | les.viter.dk
-2. Staging = staging.viter.dk & Prod = les.viter.dk
 
 ## Frontend
 1. Prod = port 80

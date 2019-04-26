@@ -1,1 +1,1 @@
-sudo docker service inspect --pretty lesfront
+sudo docker service inspect --pretty lesfrontprod
