@@ -29,7 +29,7 @@ handler.on('*', (event) => {
             buildEvents.push([`Tests Passed Frontend - Updating Cluster | TIME: ${new Date(new Date().getTime())}`])
           break;
           case 'failure': 
-            buildEvents.push([`Tests Failed | TIME: ${new Date(new Date().getTime())}`])
+            buildEvents.push([`Tests Failed Frontend | TIME: ${new Date(new Date().getTime())}`])
           break;
         }
       }else if(event.payload.name.split("/")[1].includes("backend")){
@@ -40,7 +40,7 @@ handler.on('*', (event) => {
             buildEvents.push([`Tests Passed Backend - Updating Cluster | TIME: ${new Date(new Date().getTime())}`])
           break;
           case 'failure': 
-            buildEvents.push([`Tests Failed | TIME: ${new Date(new Date().getTime())}`])
+            buildEvents.push([`Tests Failed Backend | TIME: ${new Date(new Date().getTime())}`])
           break;
         }
       }else{
