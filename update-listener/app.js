@@ -26,7 +26,7 @@ handler.on('*', (event) => {
         switch(event.payload.state){
           case 'success': 
             runScript(`${BASE_PATH}/referenceScripts/staging/front/updateService.sh`)
-            buildEvents.push([`Tests Passed - Updating Cluster | TIME: ${new Date(new Date().getTime())}`])
+            buildEvents.push([`Tests Passed Frontend - Updating Cluster | TIME: ${new Date(new Date().getTime())}`])
           break;
           case 'failure': 
             buildEvents.push([`Tests Failed | TIME: ${new Date(new Date().getTime())}`])
@@ -37,7 +37,7 @@ handler.on('*', (event) => {
         switch(event.payload.state){
           case 'success': 
             runScript(`${BASE_PATH}/referenceScripts/staging/back/updateService.sh`)
-            buildEvents.push([`Tests Passed - Updating Cluster | TIME: ${new Date(new Date().getTime())}`])
+            buildEvents.push([`Tests Passed Backend - Updating Cluster | TIME: ${new Date(new Date().getTime())}`])
           break;
           case 'failure': 
             buildEvents.push([`Tests Failed | TIME: ${new Date(new Date().getTime())}`])
