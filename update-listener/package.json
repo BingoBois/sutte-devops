@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "dev": "nodemon ./app.js",
+    "start": "node ./app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -12,5 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "github-webhook-handler": "^0.7.1"
+  },
+  "devDependencies": {
+    "nodemon": "1.19.0"
   }
 }

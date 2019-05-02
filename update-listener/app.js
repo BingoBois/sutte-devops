@@ -19,27 +19,33 @@ http.createServer(function (req, res) {
 }).listen(7777)
  
 handler.on('*', (event) => {
-  if(event.payload.check_suite && event.payload.check_suite.conclusion){
-    switch(event.payload.check_suite.conclusion){
-      case 'success': 
-        runScript(`${BASE_PATH}/referenceScripts/staging/updateService.sh`)
-        buildEvents.push([`Tests Passed - Updating Cluster | TIME: ${new Date(new Date().getTime())}`])
-      break;
-      case 'failure': 
-        buildEvents.push([`Tests Failed | TIME: ${new Date(new Date().getTime())}`])
-      break;
-    }
-  }else{
+  console.log(event)
     if(event.payload.state){
-      switch(event.payload.state){
-        case 'success': 
-          runScript(`${BASE_PATH}/referenceScripts/staging/updateService.sh`)
-          buildEvents.push([`Tests Passed - Updating Cluster | TIME: ${new Date(new Date().getTime())}`])
-        break;
-        case 'failure': 
-          buildEvents.push([`Tests Failed | TIME: ${new Date(new Date().getTime())}`])
-        break;
+      if(event.payload.name.split("/")[1].includes("frontend")){
+        console.log("received update for frontend")
+        switch(event.payload.state){
+          case 'success': 
+            runScript(`${BASE_PATH}/referenceScripts/staging/front/updateService.sh`)
+            buildEvents.push([`Tests Passed - Updating Cluster | TIME: ${new Date(new Date().getTime())}`])
+          break;
+          case 'failure': 
+            buildEvents.push([`Tests Failed | TIME: ${new Date(new Date().getTime())}`])
+          break;
+        }
+      }else if(event.payload.name.split("/")[1].includes("backend")){
+        console.log("received update for backend")
+        switch(event.payload.state){
+          case 'success': 
+            runScript(`${BASE_PATH}/referenceScripts/staging/back/updateService.sh`)
+            buildEvents.push([`Tests Passed - Updating Cluster | TIME: ${new Date(new Date().getTime())}`])
+          break;
+          case 'failure': 
+            buildEvents.push([`Tests Failed | TIME: ${new Date(new Date().getTime())}`])
+          break;
+        }
+      }else{
+        console.log("cannot read payload")
+        console.log(event);
       }
     }
-  }
 })
