@@ -25,7 +25,7 @@ handler.on('*', (event) => {
         console.log("received update for frontend")
         switch(event.payload.state){
           case 'success': 
-            runScript(`${BASE_PATH}/referenceScripts/staging/front/updateService.sh`)
+            runScript(`${BASE_PATH}/update-listener/referenceScripts/staging/front/updateService.sh`)
             buildEvents.push([`Tests Passed Frontend - Updating Cluster | TIME: ${new Date(new Date().getTime())}`])
           break;
           case 'failure': 
@@ -36,7 +36,7 @@ handler.on('*', (event) => {
         console.log("received update for backend")
         switch(event.payload.state){
           case 'success': 
-            runScript(`${BASE_PATH}/referenceScripts/staging/back/updateService.sh`)
+            runScript(`${BASE_PATH}/update-listener/referenceScripts/staging/back/updateService.sh`)
             buildEvents.push([`Tests Passed Backend - Updating Cluster | TIME: ${new Date(new Date().getTime())}`])
           break;
           case 'failure': 
